@@ -1,12 +1,12 @@
-import { Homepage } from "@/components/Homepage";
+import React from "react";
 import { Appbar } from "@/components/reusable/Appbar";
 import { Footer } from "@/components/reusable/Footer";
 
-export default function Home() {
+export default function Layout({ children }) {
   return (
     <div>
       <Appbar />
-      <Homepage />
+      <div>{children}</div>
       <Footer />
     </div>
   );
