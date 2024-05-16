@@ -1,11 +1,14 @@
 import React from 'react'
+import { HeroSection } from './homepage-content/HeroSection'
+import { BoostiveFeature } from './homepage-content/BoostiveFeature'
+import { TipsSection } from './homepage-content/TipsSection'
 
 export const Homepage = () => {
   return (
-    <div className='mx-12 mt-24 mb-10 flex flex-col gap-4'>
-        <h1>Testing Beranda</h1>
-        <input type="email" placeholder="Check Input"></input>
-        <button>Check Button</button>
+    <div>
+        <HeroSection />
+        <BoostiveFeature />
+        <TipsSection />
     </div>
   )
 }
