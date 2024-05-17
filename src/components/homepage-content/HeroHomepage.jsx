@@ -1,7 +1,7 @@
 import React from 'react'
 import Image from 'next/image'
 
-export const HeroSection = () => {
+export const HeroHomepage = () => {
   return (
     <div className='hero px-6 pt-20 pb-12 md:px-12 text-center lg:text-left' style={{backgroundColor: '#191D25'}}>
         <div className='hero-content text-left text-primary-content'>
