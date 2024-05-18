@@ -21,7 +21,7 @@ export const BoostiveFeature = () => {
                 </div>
                 <div className='card-body items-center text-center'>
                     <p className='text-justify pb-2'>Banyak tools produktif yang tersedia, gunakanlah waktu luang anda untuk melakukan hal-hal positif dan jadilah produktif!</p>
-                    <Link className='w-full btn btn-error rounded-full text-white' href={'/'}>Selengkapnya</Link>
+                    <Link className='w-full btn btn-error rounded-full text-white' href={'/formulir-kontribusi'}>Selengkapnya</Link>
                 </div>
             </div>
         </div>
