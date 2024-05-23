@@ -1,11 +1,11 @@
 import { Homepage } from "@/components/Homepage";
-import { Appbar } from "@/components/reusable/Appbar";
+import { UserAppbar } from "@/components/reusable/UserAppbar";
 import { Footer } from "@/components/reusable/Footer";
 
 export default function Home() {
   return (
     <div>
-      <Appbar />
+      <UserAppbar />
       <Homepage />
       <Footer />
     </div>

@@ -2,7 +2,7 @@ import React from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 
-export const Appbar = () => {
+export const UserAppbar = () => {
   return (
     <nav className="fixed top-0 left-0 right-0 z-10 navbar bg-white border-solid border-2 border-gray-100">
         <div>

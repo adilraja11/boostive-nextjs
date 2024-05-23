@@ -1,11 +1,11 @@
 import React from "react";
-import { Appbar } from "@/components/reusable/Appbar";
 import { Footer } from "@/components/reusable/Footer";
+import { UserAppbar } from "@/components/reusable/UserAppbar";
 
 export default function Layout({ children }) {
   return (
     <div>
-      <Appbar />
+      <UserAppbar />
       <div>{children}</div>
       <Footer />
     </div>
