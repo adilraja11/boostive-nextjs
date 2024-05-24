@@ -1,4 +1,8 @@
 import React from 'react'
+import Link from 'next/link'
+import Image from 'next/image'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faArrowRightFromBracket, faUser, faChevronDown } from '@fortawesome/free-solid-svg-icons'
 
 export const SuperadminAppbar = () => {
   return (
@@ -13,19 +17,30 @@ export const SuperadminAppbar = () => {
             </div>
         </div>
         <div className="navbar-end">
-            <ul className="menu menu-horizontal px-1">
-                <li>
-                <details>
-                    <summary>
-                        Superadmin
-                    </summary>
-                    <ul className="p-2 bg-base-100 rounded-t-none">
-                        <li><a>Profil</a></li>
-                        <li><a>Keluar</a></li>
-                    </ul>
-                </details>
-                </li>
+        <div className="dropdown dropdown-end">
+            <div tabIndex={0} role="button" className="flex items-center gap-2 btn btn-ghost text-base font-normal">
+                <div className="avatar">
+                    <Image
+                        width={30}
+                        height={30}
+                        src={'/user-default.png'}
+                        className='rounded-full'
+                    ></Image>
+                </div>
+                <p>Superadmin</p>
+                <FontAwesomeIcon icon={faChevronDown} className='h-3'/>
+            </div>
+            <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
+                <li><Link href={'/profile'} className='text-base'>
+                    <FontAwesomeIcon icon={faUser} className='h-4'/>
+                    Profil
+                    </Link></li>
+                <li><Link href={'/login'} className='text-base'>
+                    <FontAwesomeIcon icon={faArrowRightFromBracket} className='h-4'/>
+                    Keluar
+                    </Link></li>
             </ul>
+            </div>
         </div>
     </nav>
   )

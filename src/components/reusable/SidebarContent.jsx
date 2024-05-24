@@ -3,12 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChartLine } from "@fortawesome/free-solid-svg-icons";
-import { faHouse } from "@fortawesome/free-solid-svg-icons";
-import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
-import { faUpRightFromSquare } from "@fortawesome/free-solid-svg-icons";
-import { faUser } from "@fortawesome/free-solid-svg-icons";
-import { faArrowRightFromBracket } from "@fortawesome/free-solid-svg-icons";
+import { faChartLine, faHouse, faPaperPlane, faUpRightFromSquare, faUser, faArrowRightFromBracket} from "@fortawesome/free-solid-svg-icons";
 
 export const SidebarContent = () => {
   return (
