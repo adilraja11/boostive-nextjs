@@ -9,7 +9,7 @@ export default function Layout({ children }) {
       <div className="drawer-content">
         {/* Page content here */}
         <SuperadminAppbar />
-        <div className="my-6 mx-4">{children}</div>
+        <div className="min-h-screen flex justify-center mx-12 my-5">{children}</div>
       </div> 
       <div className="drawer-side">
         <label htmlFor="my-drawer" aria-label="close sidebar" className="drawer-overlay"></label>

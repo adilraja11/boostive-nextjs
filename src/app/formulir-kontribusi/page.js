@@ -3,7 +3,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeftLong } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
-import { FormKontribusi } from "@/components/form-kontribusi/FormKontribusi";
+import { FormKontribusi } from "@/components/FormKontribusi";
 
 export default function Home() {
   return (
