@@ -15,3 +15,9 @@
     @apply block w-full input input-bordered;
   }
 }
+
+@layer components {
+  /* .rdt_Table {
+    @apply table table-zebra;
+  } */
+}
