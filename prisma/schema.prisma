@@ -36,10 +36,10 @@ model User {
   email String @unique
   password String
   role Role
-  profileImage String
+  profileImage String?
   gender Gender
-  address String
-  phoneNumber String
+  address String?
+  phoneNumber String?
 
   resource Resource[]
 }
