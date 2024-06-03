@@ -57,21 +57,21 @@ model Category {
 model Resource {
   id String @id @default(cuid())
   contributorName String
-  contributorEmail String @unique
+  contributorEmail String
   status Status
 
   title String
   slug String
   description String
-  featuredImage String
+  featuredImage String?
   linkUrl String
-  viewCount Int
+  viewCount Int @default(0)
 
   createAt DateTime @default(now())
   updateAt DateTime @updatedAt
 
   categoryId String
   category Category @relation(fields: [categoryId], references: [id])
-  userId String
-  user User @relation(fields: [userId], references: [id])
+  userId String?
+  user User? @relation(fields: [userId], references: [id])
 }
