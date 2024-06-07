@@ -11,9 +11,20 @@ async function getCategories() {
   return data;
 }
 
+async function getPopularResource() {
+  const resources = await fetch(`${API_URL}/api/produktif`, {
+    cache: 'no-store'
+  });
+
+  const {data} = await resources.json();
+  return data;
+}
+
 export default async function Home() {
   const categoryData = await getCategories();
+  const popularData = await getPopularResource();
+
   return (
-    <Produktif categoryData={categoryData} />
+    <Produktif categoryData={categoryData} popularData={popularData} />
   );
 }

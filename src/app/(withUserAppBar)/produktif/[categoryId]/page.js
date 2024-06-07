@@ -26,7 +26,7 @@ export default async function Home({params}) {
   const resourceData = await getResourceByCategory(params.categoryId);
   const categoryData = await getCategoryName(params.categoryId);
 
-  console.log(resourceData);
+  // console.log(resourceData);
 
   return (
     <div className="relative">
@@ -58,11 +58,16 @@ export default async function Home({params}) {
             </div>
           </div>
           {/* List Produktif by Category */}
+          {resourceData
+              .slice(0, 4)
+              .map(({id, title, slug, description, featuredImage, categoryId, category}) => {
+                return <ProduktifCard key={id} title={title} slug={slug} description={description} featuredImage={featuredImage} categoryId={categoryId} category={category} />
+          })}
+          {/* <ProduktifCard />
           <ProduktifCard />
           <ProduktifCard />
           <ProduktifCard />
-          <ProduktifCard />
-          <ProduktifCard />
+          <ProduktifCard /> */}
         </div>
       </section>
     </div>

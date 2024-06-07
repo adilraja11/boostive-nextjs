@@ -2,7 +2,7 @@ import React from 'react'
 import { CategoryList } from './produktif-content/CategoryList'
 import { ProduktifCard } from './reusable/ProduktifCard'
 
-export const Produktif = ({categoryData}) => {
+export const Produktif = ({categoryData, popularData}) => {
   return (
     <div>
         <section className='mt-10 px-6 py-12 md:px-12'>
@@ -15,10 +15,11 @@ export const Produktif = ({categoryData}) => {
           <p className='text-1lg md:text-2lg xl:text-3lg text-inherit font-regular text-center tracking-tight mb-8'>Temukan pengetahuan baru dari tools populer</p>
           <div className='grid grid-cols-2 max-[600px]:grid-cols-1 xl:grid-cols-4 gap-x-10 gap-y-8'>
             {/* Filtering by biggest View on card */}
-            <ProduktifCard />
-            <ProduktifCard />
-            <ProduktifCard />
-            <ProduktifCard />
+            {popularData
+              .slice(0, 4)
+              .map(({id, title, slug, description, featuredImage, categoryId, category}) => {
+                return <ProduktifCard key={id} title={title} slug={slug} description={description} featuredImage={featuredImage} categoryId={categoryId} category={category} />
+              })}
           </div>
         </section>
     </div>

@@ -10,7 +10,15 @@ export async function GET(request, {params}) {
                 where: {
                     categoryId: categoryId,
                     status: 'Diterima',
-                }
+                },
+                include: {
+                    category: {
+                      select: {
+                        name: true,
+                        backgroundColor: true
+                      },
+                    },
+                },
             });
     
             return Response.json(
@@ -30,7 +38,20 @@ export async function GET(request, {params}) {
         const allProduktif = await prisma.resource.findMany({
             where: {
                 status: 'Diterima'
-            }
+            },
+            orderBy: [
+                {
+                    viewCount: 'desc'
+                }
+            ],
+            include: {
+                category: {
+                  select: {
+                    name: true,
+                    backgroundColor: true
+                  },
+                },
+            },
         });
 
         return Response.json(
