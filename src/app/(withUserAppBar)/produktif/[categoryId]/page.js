@@ -1,12 +1,36 @@
 import { HeroProduktif } from "@/components/produktif-content/HeroProduktif";
 import { ProduktifCard } from "@/components/reusable/ProduktifCard";
+import { API_URL } from "@/config/apiUrl";
 import Image from "next/image";
 import Link from "next/link";
 
-export default function Home() {
+async function getResourceByCategory(categoryId) {
+  const response = await fetch(`${API_URL}/api/produktif?categoryId=${categoryId}`, {
+    cache: 'no-store'
+  });
+
+  const {data} = await response.json();
+  return data;
+}
+
+async function getCategoryName(categoryId) {
+  const response = await fetch(`${API_URL}/api/categories?categoryId=${categoryId}`, {
+    cache: 'no-store'
+  });
+
+  const {data} = await response.json();
+  return data;
+}
+
+export default async function Home({params}) {
+  const resourceData = await getResourceByCategory(params.categoryId);
+  const categoryData = await getCategoryName(params.categoryId);
+
+  console.log(resourceData);
+
   return (
     <div className="relative">
-      <HeroProduktif />
+      <HeroProduktif categoryData={categoryData} />
       <section className="z-10 mt-[-350px] sm:mt-[-310px] md:mt-[-150px] mx-4 sm:mx-6  md:mx-12 mb-6">
         <div className="grid grid-cols-2 max-[500px]:grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 gap-x-6 gap-y-4">
           {/* Add New Produktif */}
