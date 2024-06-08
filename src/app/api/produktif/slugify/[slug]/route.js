@@ -8,6 +8,14 @@ export async function GET(request, {params}) {
             where: {
                 slug: slug
             },
+            include: {
+                category: {
+                  select: {
+                    name: true,
+                    backgroundColor: true
+                  },
+                },
+            },
         })
         return Response.json(
             {data: produktifDetail, message: 'Get Produktif Detail Successfully'},
