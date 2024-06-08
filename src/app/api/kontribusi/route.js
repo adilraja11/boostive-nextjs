@@ -14,7 +14,14 @@ export async function GET() {
                         status: 'Ditolak'
                     }
                 ]
-            }
+            },
+            include: {
+                category: {
+                  select: {
+                    name: true,
+                  },
+                },
+            },
         });
 
         return Response.json(

@@ -5,7 +5,7 @@ import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPenToSquare, faTrashCan } from '@fortawesome/free-solid-svg-icons';
 
-export const DataProduktif = () => {
+export const DataProduktif = ({produktifData}) => {
     const initialData = [
         {
             kategori: 'Semua Usia',
@@ -187,11 +187,11 @@ export const DataProduktif = () => {
     const columnHelper = createColumnHelper();
 
     const columns = [
-        columnHelper.accessor('kategori', {
+        columnHelper.accessor('category.name', {
             cell: (info) => info.getValue(),
             header: 'Kategori'
         }),
-        columnHelper.accessor('activityName', {
+        columnHelper.accessor('title', {
             cell: (info) => info.getValue(),
             header: 'Nama Kegiatan'
         }),
@@ -205,7 +205,7 @@ export const DataProduktif = () => {
             //     </div>
             // )
         }),
-        columnHelper.accessor('datetime', {
+        columnHelper.accessor('updateAt', {
             cell: (info) => info.getValue(),
             header: 'Tanggal'
         }),
@@ -220,7 +220,7 @@ export const DataProduktif = () => {
         })
     ]
 
-    const [data, setData] = useState(initialData);
+    const [data, setData] = useState(produktifData);
     const [globalFilter, setGlobalFilter] = useState('');
 
     const table = useReactTable({

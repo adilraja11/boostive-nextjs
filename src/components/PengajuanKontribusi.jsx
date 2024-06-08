@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
 import React, { useState } from 'react'
 
-export const PengajuanKontribusi = () => {
+export const PengajuanKontribusi = ({requestData}) => {
     const initialData = [
         {
             id: 1,
@@ -228,15 +228,15 @@ export const PengajuanKontribusi = () => {
     const columnHelper = createColumnHelper();
 
     const columns = [
-        columnHelper.accessor('kategori', {
+        columnHelper.accessor('category.name', {
             cell: (info) => info.getValue(),
             header: 'Kategori'
         }),
-        columnHelper.accessor('activityName', {
+        columnHelper.accessor('title', {
             cell: (info) => info.getValue(),
             header: 'Nama Kegiatan'
         }),
-        columnHelper.accessor(row => `${row.name}\n${row.email}`, {
+        columnHelper.accessor(row => `${row.contributorName}\n${row.contributorEmail}`, {
             id: 'contributor',
             header: 'Kontributor',
             // cell: (info) => (
@@ -246,7 +246,11 @@ export const PengajuanKontribusi = () => {
             //     </div>
             // )
         }),
-        columnHelper.accessor('datetime', {
+        columnHelper.accessor('status', {
+            cell: (info) => info.getValue(),
+            header: 'Status'
+        }),
+        columnHelper.accessor('createAt', {
             cell: (info) => info.getValue(),
             header: 'Tanggal'
         }),
@@ -258,7 +262,7 @@ export const PengajuanKontribusi = () => {
         })
     ];
 
-    const [data, setData] = useState(initialData);
+    const [data, setData] = useState(requestData);
     const [globalFilter, setGlobalFilter] = useState('');
 
     const table = useReactTable({
