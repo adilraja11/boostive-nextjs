@@ -7,7 +7,6 @@ const poppins = Poppins({
   subsets: ["latin"],
   style: ['italic', 'normal'],
   display: 'swap',
-  adjustFontFallback: false
 });
 
 export const metadata = {
