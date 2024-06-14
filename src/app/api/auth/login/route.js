@@ -1,4 +1,6 @@
 import prisma from "@/utils/prisma";
+import { NextResponse } from "next/server";
+
 import bcrypt from "bcrypt";
 import { sign } from "jsonwebtoken";
 
@@ -26,10 +28,18 @@ export async function POST(request) {
         }
 
         // TODO!: Jika password cocok, buat JWT Token
+        const payload = {
+            id: findUser.id,
+            fullName: findUser.fullName,
+            email: findUser.email,
+        };
 
         // TODO!: Buat Token
+        const token = sign(payload, process.env.JWT_SECRET, {expiresIn: '7d'});
+        const res = NextResponse.json({data: payload, message: 'Login succesfully'}, {status: 200});
+        res.cookies.set('token', token);
 
-        return Response.json({message: 'Login succesfully'}, {status: 200});
+        return res;
     } catch (error) {
         console.log(error);
         return Response.json(

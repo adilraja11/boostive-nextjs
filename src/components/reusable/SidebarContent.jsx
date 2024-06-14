@@ -1,3 +1,5 @@
+'use client'
+
 import React from 'react'
 import Image from "next/image";
 import Link from "next/link";
@@ -5,7 +7,18 @@ import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChartLine, faHouse, faPaperPlane, faUpRightFromSquare, faUser, faArrowRightFromBracket} from "@fortawesome/free-solid-svg-icons";
 
+import { useRouter } from 'next/navigation'
+import { API_URL } from '@/config/apiUrl'
+
 export const SidebarContent = () => {
+    const router = useRouter();
+
+    function handleLogout() {
+        document.cookie = 'token=; Path=/; Max-Age=0';
+        router.push("/");
+        window.location.replace(`${API_URL}/login`);
+    }
+
   return (
     <ul className="menu p-4 w-80 min-h-full bg-base-200 text-base-content flex gap-4">
         {/* Sidebar content here */}
@@ -27,13 +40,13 @@ export const SidebarContent = () => {
         <h1>DATA PRODUKTIF</h1>
         <div>
         <li>
-            <Link href={'/pengajuan-kontribusi'}>
+            <Link href={'/dashboard/pengajuan-kontribusi'}>
             <FontAwesomeIcon className="h-5" icon={faPaperPlane}/>
             <h1 className="text-lg">Kontribusi</h1>
             </Link>
         </li>
         <li>
-            <Link href={"/data-produktif"}>
+            <Link href={"/dashboard/data-produktif"}>
             <FontAwesomeIcon className="h-5" icon={faUpRightFromSquare}/>
             <h1 className="text-lg">Data Produktif</h1>
             </Link>
@@ -42,13 +55,13 @@ export const SidebarContent = () => {
         <h1>AKUN SAYA</h1>
         <div>
         <li>
-            <Link href={'/profile'}>
+            <Link href={'/dashboard/profile'}>
             <FontAwesomeIcon className="h-5" icon={faUser}/>
             <h1 className="text-lg">Profil</h1>
             </Link>
         </li>
         <li>
-            <Link href={"/login"}>
+            <Link href={"#"} onClick={handleLogout}>
             <FontAwesomeIcon className="h-5" icon={faArrowRightFromBracket}/>
             <h1 className="text-lg">Keluar</h1>
             </Link>

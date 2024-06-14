@@ -1,11 +1,13 @@
-import { Poppins } from "next/font/google";
 import "../styles/globals.css";
+import { Poppins } from "next/font/google";
+import { Provider } from "@/components/provider";
 
 const poppins = Poppins({  
   weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
   subsets: ["latin"],
   style: ['italic', 'normal'],
   display: 'swap',
+  adjustFontFallback: false
 });
 
 export const metadata = {
@@ -16,7 +18,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={poppins.className}>{children}</body>
+      <body className={poppins.className}>
+        <Provider>{children}</Provider>
+      </body>
     </html>
   );
 }
