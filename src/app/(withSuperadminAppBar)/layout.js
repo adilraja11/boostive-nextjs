@@ -6,10 +6,10 @@ export default function Layout({ children }) {
   return (
     <div className="drawer">
       <input id="my-drawer" type="checkbox" className="drawer-toggle" />
-      <div className="drawer-content">
+      <div className="min-h-screen bg-slate-100 drawer-content">
         {/* Page content here */}
         <SuperadminAppbar />
-        <div className="min-h-screen flex justify-center mx-12 my-5">{children}</div>
+        <div className="flex justify-center mx-12 my-5">{children}</div>
       </div> 
       <div className="drawer-side">
         <label htmlFor="my-drawer" aria-label="close sidebar" className="drawer-overlay"></label>

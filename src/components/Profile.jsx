@@ -7,7 +7,7 @@ import { faCamera, faLock } from '@fortawesome/free-solid-svg-icons'
 
 export const Profile = () => {
   return (
-    <div className='shadow-sm shadow-gray-500 rounded-lg px-10 py-4 flex flex-col gap-4'>
+    <div className='bg-white shadow-sm shadow-gray-500 rounded-lg px-10 py-4 flex flex-col gap-4'>
       <div className="relative w-[150px]">
           <Image
               width={150}
