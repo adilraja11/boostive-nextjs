@@ -59,7 +59,7 @@ export const FormKontribusi = ({categoryData}) => {
         });
 
         if (response.status === 401 || response.status === 404 || response.status === 500) {
-            const { errorMessage } = await res.json();
+            const { errorMessage } = await response.json();
             toast.error(errorMessage);
             return;
         }

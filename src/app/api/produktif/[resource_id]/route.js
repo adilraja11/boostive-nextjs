@@ -2,6 +2,29 @@ import prisma from "@/utils/prisma";
 import { uploadFile } from "@/lib/uploadFile";
 import slugify from "slugify";
 
+export async function GET(request, {params}) {
+    const resourceId = params.resource_id;
+
+    try {
+        const produktifDetail = await prisma.resource.findFirst({
+            where: {
+                id: resourceId
+            }
+        });
+
+        return Response.json(
+            {data: produktifDetail, message: 'Get Produktif Detail Successfully'},
+            {status: 200}
+        )
+    } catch (error) {
+        console.log(error);
+        return Response.json(
+            {error: 'Get Produktif Detail Failed'},
+            {status: 500}
+        )
+    }
+}
+
 export async function DELETE(request, {params}) {
     const resourceId = params.resource_id;
 

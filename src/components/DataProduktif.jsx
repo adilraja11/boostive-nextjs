@@ -4,6 +4,7 @@ import { createColumnHelper, flexRender, getCoreRowModel, getFilteredRowModel, g
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPenToSquare, faTrashCan } from '@fortawesome/free-solid-svg-icons';
+import Link from 'next/link';
 
 export const DataProduktif = ({produktifData}) => {
     const columnHelper = createColumnHelper();
@@ -33,9 +34,9 @@ export const DataProduktif = ({produktifData}) => {
         }),
         columnHelper.accessor('opsi', {
             header: 'Opsi',
-            cell: () => (
+            cell: ({row}) => (
                 <div className='flex gap-2'>
-                    <button className='btn btn-sm btn-warning text-white'><FontAwesomeIcon icon={faPenToSquare}/></button>
+                    <Link href={`/dashboard/data-produktif/edit/${row.original.id}`} className='btn btn-sm btn-warning text-white'><FontAwesomeIcon icon={faPenToSquare}/></Link>
                     <button className='btn btn-sm btn-error text-white'><FontAwesomeIcon icon={faTrashCan}/></button>
                 </div>
             )
