@@ -1,22 +1,24 @@
 'use client'
 
-import { useState } from 'react'
-import Image from 'next/image'
+import Image from "next/image";
 import toast from 'react-hot-toast'
+import { API_URL } from "@/config/apiUrl";
+import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCamera } from '@fortawesome/free-solid-svg-icons'
-import { API_URL } from '@/config/apiUrl'
-import { useRouter } from 'next/navigation'
+import { useRouter } from "next/navigation";
 
-export const AddDataProduktif = ({categoryData}) => {
+export const UpdateDataProduktif = ({resourceDetail, categoryData}) => {
     const router = useRouter();
 
-    const [featuredImage, setFeaturedImage] = useState(null); // store the file object
+    const [featuredImage, setFeaturedImage] = useState(resourceDetail.featuredImage); // store the file object
     const [featuredImagePreview, setFeaturedImagePreview] = useState(null);
-    const [categoryId, setCategoryId] = useState('Pilih Kategori');
-    const [title, setTitle] = useState('');
-    const [linkUrl, setLinkUrl] = useState('');
-    const [description, setDescription] = useState('');
+    const [categoryId, setCategoryId] = useState(resourceDetail.categoryId);
+    const [title, setTitle] = useState(resourceDetail.title);
+    const [linkUrl, setLinkUrl] = useState(resourceDetail.linkUrl);
+    const [description, setDescription] = useState(resourceDetail.description);
+
+    const imageUrl = 'https://pub-798a103be026442c82d91a50a5a41f0b.r2.dev/boostive-nextjs%2Fresources%2F';
 
     function createFeaturedImagePreview(file) {
         if (file) {
@@ -50,20 +52,17 @@ export const AddDataProduktif = ({categoryData}) => {
             return;
         }
 
-        const user = JSON.parse(localStorage.getItem("user"));
-        const userId = user.id;
-
         const formData = new FormData();
 
-        formData.append("featuredImage", featuredImage);
+        formData.append("featuredImage", featuredImage); 
         formData.append("categoryId", categoryId);
         formData.append("title", title);
         formData.append("linkUrl", linkUrl);
         formData.append("description", description);
 
         try {
-            const response = await fetch(`${API_URL}/api/produktif/add/${userId}`, {
-                method: "POST",
+            const response = await fetch(`${API_URL}/api/produktif/${resourceDetail.id}`, {
+                method: "PATCH",
                 body: formData
             });
     
@@ -83,24 +82,33 @@ export const AddDataProduktif = ({categoryData}) => {
     }
   return (
     <div className='bg-white shadow-sm shadow-gray-500 rounded-lg px-10 py-4 flex flex-col gap-4'>
-      <div className="relative w-[150px]">
-        {featuredImagePreview ? <Image width={326} height={326} src={featuredImagePreview}></Image> : <Image width={326} height={326} src={'/default.png'}></Image>}
-          <div className='absolute bottom-0 right-0'>
-            <button onClick={()=>document.getElementById('upload_image_modal').showModal()} className='btn btn-circle btn-neutral'>
-              <FontAwesomeIcon className='w-6 text-white' icon={faCamera}/>
-            </button>
-            <dialog id="upload_image_modal" className="modal">
-                <div className="modal-box">
-                    <input 
-                        type="file" 
-                        className="file-input file-input-bordered w-full"
-                        onChange={(e) => createFeaturedImagePreview(e.target.files[0])} />
-                </div>
-                <form method="dialog" className="modal-backdrop">
-                    <button>close</button>
-                </form>
-            </dialog>
-          </div>
+        <div className='flex flex-col gap-2'>
+            <p>Nama Kontributor</p>
+            <input type="text" value={resourceDetail.contributorName} disabled />
+        </div>
+        <div className='flex flex-col gap-2'>
+            <p>Email Kontributor</p>
+            <input type="text" value={resourceDetail.contributorEmail} disabled />
+        </div>
+        <div className="divider"></div>
+        <div className="relative w-[150px]">
+            {featuredImagePreview ? <Image width={326} height={326} src={featuredImagePreview}></Image> : <Image width={326} height={326} src={`${imageUrl}${featuredImage}`}></Image>}
+            <div className='absolute bottom-0 right-0'>
+                <button onClick={()=>document.getElementById('upload_image_modal').showModal()} className='btn btn-circle btn-neutral'>
+                <FontAwesomeIcon className='w-6 text-white' icon={faCamera}/>
+                </button>
+                <dialog id="upload_image_modal" className="modal">
+                    <div className="modal-box">
+                        <input 
+                            type="file"
+                            className="file-input file-input-bordered w-full"
+                            onChange={(e) => createFeaturedImagePreview(e.target.files[0])} />
+                    </div>
+                    <form method="dialog" className="modal-backdrop">
+                        <button>close</button>
+                    </form>
+                </dialog>
+            </div>
       </div>
       <div className="flex flex-col gap-2">
           <label>Kategori</label>
@@ -123,7 +131,7 @@ export const AddDataProduktif = ({categoryData}) => {
           <label>Deskripsi</label>
           <textarea className="border-2 rounded-lg px-3 py-2" rows={'3'} value={description} onChange={handleChangeDescription}></textarea>
       </div>
-      <button onClick={handleSubmit} className="btn btn-primary font-bold text-base">Tambahkan</button>
+      <button onClick={handleSubmit} className="btn btn-primary font-bold text-base">Simpan Perubahan</button>
     </div>
   )
 }

@@ -3,8 +3,9 @@
 import { createColumnHelper, flexRender, getCoreRowModel, getFilteredRowModel, getPaginationRowModel, useReactTable } from '@tanstack/react-table';
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPenToSquare, faTrashCan } from '@fortawesome/free-solid-svg-icons';
+import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
 import Link from 'next/link';
+import { DeleteDataProduktif } from './data-produktif/DeleteDataProduktif';
 
 export const DataProduktif = ({produktifData}) => {
     const columnHelper = createColumnHelper();
@@ -37,7 +38,7 @@ export const DataProduktif = ({produktifData}) => {
             cell: ({row}) => (
                 <div className='flex gap-2'>
                     <Link href={`/dashboard/data-produktif/edit/${row.original.id}`} className='btn btn-sm btn-warning text-white'><FontAwesomeIcon icon={faPenToSquare}/></Link>
-                    <button className='btn btn-sm btn-error text-white'><FontAwesomeIcon icon={faTrashCan}/></button>
+                    <DeleteDataProduktif key={row.id} requestId={row.original.id} requestData={row.original}/>
                 </div>
             )
         })

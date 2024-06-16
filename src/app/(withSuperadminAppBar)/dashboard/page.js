@@ -3,6 +3,8 @@ import { API_URL } from "@/config/apiUrl";
 import { cookies } from "next/headers";
 import * as jose from "jose";
 
+export const dynamic = "force-dynamic";
+
 async function getDataProduktif() {
   const requestData = await fetch(`${API_URL}/api/produktif`, {
     cache: 'no-store'
