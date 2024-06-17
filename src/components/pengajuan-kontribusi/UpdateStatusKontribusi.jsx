@@ -39,7 +39,7 @@ export const UpdateStatusKontribusi = ({requestId, requestData}) => {
             });
     
             if (response.status === 401 || response.status === 404 || response.status === 500) {
-                const { errorMessage } = await res.json();
+                const { errorMessage } = await response.json();
                 toast.error(errorMessage);
                 return;
             };
@@ -48,6 +48,7 @@ export const UpdateStatusKontribusi = ({requestId, requestData}) => {
             toast.success(message);
 
             router.refresh();
+            window.location.reload();
         } catch (error) {
             console.log(error);
         }

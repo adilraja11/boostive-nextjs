@@ -32,6 +32,7 @@ export async function POST(request) {
             id: findUser.id,
             fullName: findUser.fullName,
             email: findUser.email,
+            profileImage: findUser.profileImage
         };
 
         // TODO!: Buat Token

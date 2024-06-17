@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
 import Link from 'next/link';
 import { DeleteDataProduktif } from './data-produktif/DeleteDataProduktif';
+import moment from 'moment';
 
 export const DataProduktif = ({produktifData}) => {
     const columnHelper = createColumnHelper();
@@ -30,7 +31,7 @@ export const DataProduktif = ({produktifData}) => {
             // )
         }),
         columnHelper.accessor('updateAt', {
-            cell: (info) => info.getValue(),
+            cell: (info) => moment(info.getValue()).format("MMMM Do YYYY: h:mm:ss A"),
             header: 'Tanggal'
         }),
         columnHelper.accessor('opsi', {

@@ -3,6 +3,7 @@
 import { createColumnHelper, flexRender, getCoreRowModel, getFilteredRowModel, getPaginationRowModel, useReactTable } from '@tanstack/react-table';
 import React, { useState } from 'react'
 import { UpdateStatusKontribusi } from './pengajuan-kontribusi/UpdateStatusKontribusi';
+import moment from 'moment';
 
 export const PengajuanKontribusi = ({requestData}) => {
     const columnHelper = createColumnHelper();
@@ -31,7 +32,7 @@ export const PengajuanKontribusi = ({requestData}) => {
             header: 'Status'
         }),
         columnHelper.accessor('createAt', {
-            cell: (info) => info.getValue(),
+            cell: (info) => moment(info.getValue()).format("MMMM Do YYYY: h:mm:ss A"),
             header: 'Tanggal'
         }),
         columnHelper.accessor('id', {

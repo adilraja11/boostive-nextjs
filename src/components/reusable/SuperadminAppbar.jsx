@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -10,6 +10,17 @@ import { API_URL } from '@/config/apiUrl'
 
 export const SuperadminAppbar = () => {
     const router = useRouter();
+
+    const [user, setUser] = useState(null);
+
+    const imageUrl = 'https://pub-798a103be026442c82d91a50a5a41f0b.r2.dev/boostive-nextjs%2Fprofiles%2F';
+
+    useEffect(() => {
+        const userData = localStorage.getItem("user");
+        if (userData) {
+            setUser(JSON.parse(userData));
+        }
+    }, []);
 
     function handleLogout() {
         document.cookie = 'token=; Path=/; Max-Age=0';
@@ -29,29 +40,34 @@ export const SuperadminAppbar = () => {
             </div>
         </div>
         <div className="navbar-end">
-        <div className="dropdown dropdown-end">
-            <div tabIndex={0} role="button" className="flex items-center gap-2 btn btn-ghost text-base font-normal">
-                <div className="avatar">
-                    <Image
-                        width={30}
-                        height={30}
-                        src={'/user-default.png'}
-                        className='rounded-full'
-                    ></Image>
+            <div className="dropdown dropdown-end">
+            {!user
+                ? <div>Loading...</div> 
+                : <>
+                <div tabIndex={0} role="button" className="flex items-center gap-2 btn btn-ghost text-base font-normal">
+                    <div className="avatar">
+                        <Image
+                            width={30}
+                            height={30}
+                            src={`${imageUrl}${user.profileImage}`}
+                            className='rounded-full'
+                        ></Image>
+                    </div>
+                    <p>{user.fullName}</p>
+                    <FontAwesomeIcon icon={faChevronDown} className='h-3'/>
                 </div>
-                <p>Superadmin</p>
-                <FontAwesomeIcon icon={faChevronDown} className='h-3'/>
-            </div>
-            <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
-                <li><Link href={'/dashboard/profile'} className='text-base'>
-                    <FontAwesomeIcon icon={faUser} className='h-4'/>
-                    Profil
-                    </Link></li>
-                <li><Link href={'#'} onClick={handleLogout} className='text-base'>
-                    <FontAwesomeIcon icon={faArrowRightFromBracket} className='h-4'/>
-                    Keluar
-                    </Link></li>
-            </ul>
+                <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
+                    <li><Link href={'/dashboard/profile'} className='text-base'>
+                        <FontAwesomeIcon icon={faUser} className='h-4'/>
+                        Profil
+                        </Link></li>
+                    <li><Link href={'#'} onClick={handleLogout} className='text-base'>
+                        <FontAwesomeIcon icon={faArrowRightFromBracket} className='h-4'/>
+                        Keluar
+                        </Link></li>
+                </ul>
+                </>
+            }
             </div>
         </div>
     </nav>

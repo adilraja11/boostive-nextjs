@@ -34,6 +34,7 @@ export const DeleteDataProduktif = ({requestId, requestData}) => {
             toast.success(message);
 
             router.refresh();
+            window.location.reload();
         } catch (error) {
             console.log(error);
         }
