@@ -2,7 +2,38 @@ import { nanoid } from "nanoid";
 import prisma from "@/utils/prisma";
 import slugify from "slugify";
 
-export async function GET() {
+export async function GET(request, {params}) {
+    const searchParams = request.nextUrl.searchParams;
+    const contributorEmail = searchParams.get("contributorEmail");
+
+    if (contributorEmail) {
+        try {
+            const allKontribusi = await prisma.resource.findMany({
+                where: {
+                    contributorEmail: contributorEmail,
+                },
+                include: {
+                    category: {
+                      select: {
+                        name: true,
+                      },
+                    },
+                },
+            });
+    
+            return Response.json(
+                {data: allKontribusi, message: 'Get Kontribusi Data by Contributor Email Successfully'},
+                {status: 200}
+            )
+        } catch (error) {
+            console.log(error);
+            return Response.json(
+                {error: 'Get Kontribusi Data by Contributor Email Failed'},
+                {status: 500}
+            )
+        }
+    }
+
     try {
         const allKontribusi = await prisma.resource.findMany({
             where: {

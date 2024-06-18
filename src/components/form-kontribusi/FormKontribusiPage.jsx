@@ -23,7 +23,6 @@ export const FormKontribusiPage = ({categoryData}) => {
           <div className="flex flex-col mx-4 gap-4">
             <div className="flex justify-between">
               <h1 className="font-semibold">Kontributor</h1>
-              <a href="#" onClick={() => document.getElementById('check_status_kontribusi').showModal()} className="link link-hover text-blue-600">Periksa Status Kontribusi</a>
               {/* Open the modal using document.getElementById('ID').showModal() method */}
               <ModalStatusKontribusi />
             </div>
