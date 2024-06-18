@@ -76,7 +76,8 @@ export const AddDataProduktif = ({categoryData}) => {
             const {message} = await response.json();
             toast.success(message);
 
-            router.back();
+            router.push("/dashboard/data-produktif");
+            window.location.replace(`${API_URL}/dashboard/data-produktif`);
         } catch (error) {
             console.log(error);
         }
@@ -123,7 +124,7 @@ export const AddDataProduktif = ({categoryData}) => {
           <label>Deskripsi</label>
           <textarea className="border-2 rounded-lg px-3 py-2" rows={'3'} value={description} onChange={handleChangeDescription}></textarea>
       </div>
-      <button onClick={handleSubmit} className="btn btn-primary font-bold text-base">Tambahkan</button>
+      <button onClick={handleSubmit} type='submit' className="btn btn-primary font-bold text-base">Tambahkan</button>
     </div>
   )
 }

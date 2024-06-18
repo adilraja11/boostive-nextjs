@@ -33,8 +33,8 @@ export const DeleteDataProduktif = ({requestId, requestData}) => {
             const {message} = await response.json();
             toast.success(message);
 
-            router.refresh();
-            window.location.reload();
+            router.push("/dashboard/data-produktif");
+            window.location.replace(`${API_URL}/dashboard/data-produktif`);
         } catch (error) {
             console.log(error);
         }

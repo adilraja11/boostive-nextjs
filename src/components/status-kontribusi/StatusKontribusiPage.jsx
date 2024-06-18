@@ -17,7 +17,7 @@ export const StatusKontribusiPage = ({contributorName, decodedContributorEmail, 
           <div className="flex flex-col items-center py-4 gap-2">
             <h1 className="font-semibold text-3xl">Status Kontribusi Anda</h1>
             {statusKontribusiData.length == 0
-                ? <p className='text-lg text-center'>Hai <b>{contributorName}</b>, anda belum memiliki kontribusi, mulai bagikan tools bermanfaat disini.</p>
+                ? <p className='text-lg text-center'>Hai <b>{contributorName}</b>, anda belum memiliki kontribusi, mulai bagikan tools bermanfaat <Link className='link link-hover text-blue-600' href={'/formulir-kontribusi'}>disini</Link>.</p>
                 : <p className='text-lg text-center'>Hai <b>{contributorName}</b>, terima kasih atas kontribusi Anda dalam berbagi tools bermanfaat.</p>}
           </div>
           <div className="flex flex-col mx-4 gap-4">

@@ -107,7 +107,7 @@ export const UpdateStatusKontribusi = ({requestId, requestData}) => {
                     <form method="dialog" className='flex gap-2'>
                         {/* if there is a button in form, it will close the modal */}
                         <button className="btn">Batal</button>
-                        <button onClick={handleSubmitUpdate} className="btn btn-primary">Simpan</button>
+                        <button onClick={handleSubmitUpdate} type='submit' className="btn btn-primary">Simpan</button>
                     </form>
                 </div>
             </div>

@@ -1,9 +1,10 @@
 'use client'
 
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useState } from 'react'
 import { API_URL } from '@/config/apiUrl'
 import toast from 'react-hot-toast'
+import random from 'random'
 
 export const FormKontribusi = ({categoryData}) => {
     const [contributorName, setContributorName] = useState('');
@@ -12,6 +13,15 @@ export const FormKontribusi = ({categoryData}) => {
     const [title, setTitle] = useState('');
     const [linkUrl, setLinkUrl] = useState('');
     const [description, setDescription] = useState('');
+    const [captcha, setCaptcha] = useState('');
+
+    const [firstNumber, setFirstNumber] = useState(null);
+    const [secondNumber, setSecondNumber] = useState(null);
+
+    useEffect(() => {
+        setFirstNumber(random.int(1,9));
+        setSecondNumber(random.int(1,9));
+    }, []);
 
     const handleChangeName = (e) => {
         setContributorName(e.target.value);
@@ -37,11 +47,20 @@ export const FormKontribusi = ({categoryData}) => {
         setDescription(e.target.value);
     };
 
+    const handleChangeCaptcha = (e) => {
+        setCaptcha(e.target.value);
+    };
+
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        if (!contributorName || !contributorEmail || !categoryId || !title || !linkUrl || !description) {
+        if (!contributorName || !contributorEmail || !categoryId || !title || !linkUrl || !description || !captcha) {
             toast.error('All field must be filled');
+            return;
+        }
+
+        if (firstNumber + secondNumber !== parseInt(captcha)) {
+            toast.error('Captcha must be corrected');
             return;
         }
 
@@ -73,6 +92,7 @@ export const FormKontribusi = ({categoryData}) => {
         setTitle('');
         setLinkUrl('');
         setDescription('');
+        setCaptcha('');
     }
     
   return (
@@ -108,8 +128,8 @@ export const FormKontribusi = ({categoryData}) => {
             <textarea className="border-2 rounded-lg px-3 py-2" type='text' value={description} onChange={handleChangeDescription} placeholder="Masukkkan Deskripsi" rows={'5'}></textarea>
         </div>
         <div className="flex flex-col gap-2">
-            <h1 className="font-semibold">8 + 8</h1>
-            <input placeholder="Hasil dari 8 + 8"></input>
+            <h1 className="font-semibold">{firstNumber} + {secondNumber}</h1>
+            <input placeholder={`Hasil dari ${firstNumber} + ${secondNumber}`} value={captcha} onChange={handleChangeCaptcha}></input>
         </div>
         <button className="btn btn-primary font-bold text-base" onClick={handleSubmit}>Kirim</button>
     </form>
