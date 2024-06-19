@@ -5,7 +5,7 @@ import Image from 'next/image'
 export const CategoryList = ({categoryData}) => {
     const urlImage = 'https://pub-798a103be026442c82d91a50a5a41f0b.r2.dev/boostive-nextjs%2Fcategories%2F';
   return (
-    <div className='grid grid-cols-2 max-[500px]:grid-cols-1 lg:grid-cols-3 gap-x-10 gap-y-8'>
+    <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-8'>
         {categoryData.map(({id, name, description, iconImage, backgroundColor}) => {
             return (
                 <Link key={id} href={`/produktif/${id}`} className='flex items-center'>

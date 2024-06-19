@@ -46,12 +46,14 @@ export const SuperadminAppbar = () => {
                 : <>
                 <div tabIndex={0} role="button" className="flex items-center gap-2 btn btn-ghost text-base font-normal">
                     <div className="avatar">
-                        <Image
-                            width={30}
-                            height={30}
-                            src={`${imageUrl}${user.profileImage}`}
-                            className='rounded-full'
-                        ></Image>
+                        <div className='w-8 h-8 rounded-full overflow-hidden'>
+                            <Image
+                                width={75}
+                                height={75}
+                                src={`${imageUrl}${user.profileImage}`}
+                                className='object-cover w-full h-full'
+                            ></Image>
+                        </div>
                     </div>
                     <p>{user.fullName}</p>
                     <FontAwesomeIcon icon={faChevronDown} className='h-3'/>

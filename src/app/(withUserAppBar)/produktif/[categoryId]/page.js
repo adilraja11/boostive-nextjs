@@ -32,7 +32,7 @@ export default async function Home({params}) {
     <div className="relative">
       <HeroProduktif categoryData={categoryData} />
       <section className="z-10 mt-[-350px] sm:mt-[-310px] md:mt-[-150px] mx-4 sm:mx-6  md:mx-12 mb-6">
-        <div className="grid grid-cols-2 max-[500px]:grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 gap-x-6 gap-y-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-6 gap-y-4">
           {/* Add New Produktif */}
           <div className='card bg-base-100 shadow-xl border-solid border-t-0 border-x-0 border-2 border-gray-200'>
             <figure className='mx-4 my-8 h-36'>
