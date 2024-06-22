@@ -57,7 +57,7 @@ export const UpdateStatusKontribusi = ({requestId, requestData}) => {
 
   return (
     <>
-        <button onClick={handleClickModal} className='btn btn-sm btn-primary text-white'><FontAwesomeIcon icon={faPenToSquare}/></button>
+        <button id='update' aria-label='Tekan tombol ini untuk mengubah status kontribusi' onClick={handleClickModal} className='btn btn-sm btn-primary text-white'><FontAwesomeIcon icon={faPenToSquare}/></button>
         <dialog id={`update_modal_kontribusi_${requestId}`} className="modal">
             <div className="modal-box">
                 <h3 className="font-bold text-xl">Periksa Kontribusi</h3>
@@ -71,19 +71,19 @@ export const UpdateStatusKontribusi = ({requestId, requestData}) => {
                 </div>
                 <div className='divider'></div>
                 <div className='flex flex-col gap-4'>
-                    <div className='flex flex-col gap-2'>
+                    <div id='kategori' className='flex flex-col gap-2'>
                         <p>Kategori</p>
-                        <select className="select border-2 rounded-lg px-3 py-2" disabled>
+                        <select aria-labelledby='kategori' className="select border-2 rounded-lg px-3 py-2" disabled>
                             <option value={categoryId}>{category.name}</option>
                         </select>
                     </div>
                     <div className='flex flex-col gap-2'>
                         <p>Nama Kegiatan</p>
-                        <input type="text" value={title} disabled />
+                        <input type="text" aria-label='Masukkan Nama Kegiatan' value={title} disabled />
                     </div>
                     <div className='flex flex-col gap-2'>
                         <p>Deskripsi</p>
-                        <textarea value={description} className="textarea border-2 rounded-lg px-3 py-2" disabled rows={'4'}></textarea>
+                        <textarea value={description} aria-label='Masukkan deskripsi kegiatan' className="textarea border-2 rounded-lg px-3 py-2" disabled rows={'4'}></textarea>
                     </div>
                     <div className='flex flex-col gap-2'>
                         <p>Tautan</p>
@@ -99,7 +99,7 @@ export const UpdateStatusKontribusi = ({requestId, requestData}) => {
                     </div>
                     <div className='flex flex-col gap-2'>
                         <p>Gambar Kegiatan</p>
-                        <input required type="file" name='featuredImage' onChange={handleChangeFeaturedImage} className="file-input file-input-bordered"/>
+                        <input aria-label='Unggah gambar kegiatan' required type="file" name='featuredImage' onChange={handleChangeFeaturedImage} className="file-input file-input-bordered"/>
                     </div>
                 </div>
                 <div className="modal-action">

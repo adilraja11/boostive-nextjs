@@ -38,7 +38,7 @@ export const DataProduktif = ({produktifData}) => {
             header: 'Opsi',
             cell: ({row}) => (
                 <div className='flex gap-2'>
-                    <Link href={`/dashboard/data-produktif/edit/${row.original.id}`} className='btn btn-sm btn-warning text-white'><FontAwesomeIcon icon={faPenToSquare}/></Link>
+                    <Link aria-label='Edit Data Produktif' href={`/dashboard/data-produktif/edit/${row.original.id}`} className='btn btn-sm btn-warning text-white'><FontAwesomeIcon icon={faPenToSquare}/></Link>
                     <DeleteDataProduktif key={row.id} requestId={row.original.id} requestData={row.original}/>
                 </div>
             )
@@ -70,7 +70,7 @@ export const DataProduktif = ({produktifData}) => {
         <div className='flex justify-between items-center'>
             <div className='flex gap-2 items-center'>
                 <p>Show</p>
-                <select className='select select-md select-bordered' onChange={(e) => table.setPageSize(Number(e.target.value))}>
+                <select aria-label='Atur Jumlah Data yang ditampilkan' className='select select-md select-bordered' onChange={(e) => table.setPageSize(Number(e.target.value))}>
                     <option value="5">5</option>
                     <option value="10">10</option>
                     <option value="25">25</option>

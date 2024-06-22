@@ -124,12 +124,13 @@ export const Profile = () => {
           : <Image alt={`Gambar Profil dari User ${fullName}`} width={150} height={150} src={`${imageUrl}${profileImage}`} className='rounded-full w-36 h-36 object-cover'></Image>
         }
           <div className='absolute bottom-0 right-0'>
-            <button onClick={()=>document.getElementById('upload_profile_modal').showModal()} className='btn btn-circle btn-neutral'>
+            <button aria-label='Unggah Gambar Profil Baru' onClick={()=>document.getElementById('upload_profile_modal').showModal()} className='btn btn-circle btn-neutral'>
               <FontAwesomeIcon className='w-6 text-white' icon={faCamera}/>
             </button>
             <dialog id="upload_profile_modal" className="modal">
                 <div className="modal-box">
                     <input 
+                        aria-label='File'
                         type="file"
                         className="file-input file-input-bordered w-full"
                         onChange={(e) => createProfileImagePreview(e.target.files[0])} />
@@ -142,26 +143,26 @@ export const Profile = () => {
       </div>
       <div className="flex flex-col gap-2">
           <label>Nama Lengkap</label>
-          <input value={fullName} onChange={handleChangeFullName}></input>
+          <input aria-label='Masukkan Nama Lengkap' value={fullName} onChange={handleChangeFullName}></input>
       </div>
       <div className="flex flex-col gap-2">
           <label>Jenis Kelamin</label>
-          <select value={gender} onChange={handleChangeGender} className="border-2 rounded-lg px-3 py-2">
+          <select aria-label='Masukkan Jenis Kelamin' value={gender} onChange={handleChangeGender} className="border-2 rounded-lg px-3 py-2">
               <option value={'MALE'}>Laki-laki</option>
               <option value={'FEMALE'}>Perempuan</option>
           </select>
       </div>
       <div className="flex flex-col gap-2">
-          <label>Alamat</label>
-          <textarea className="border-2 rounded-lg px-3 py-2" value={address} onChange={handleChangeAdress} rows={'3'}></textarea>
+          <label for="alamat">Alamat</label>
+          <textarea id='alamat' className="border-2 rounded-lg px-3 py-2" value={address} onChange={handleChangeAdress} rows={'3'}></textarea>
       </div>
       <div className="flex flex-col gap-2">
-          <label>Nomor Telepon</label>
-          <input value={phoneNumber} onChange={handleChangePhoneNumber} placeholder='08xx'></input>
+          <label for="telpon">Nomor Telepon</label>
+          <input id='telpon' value={phoneNumber} onChange={handleChangePhoneNumber} placeholder='08xx'></input>
       </div>
       <div className="flex flex-col gap-2">
-          <label>Email</label>
-          <input value={profile.email} disabled></input>
+          <label for="email">Email</label>
+          <input id='email' value={profile.email} disabled></input>
           <div className="divider"></div>
           <ChangePassword userId={profile.id}/>
       </div>

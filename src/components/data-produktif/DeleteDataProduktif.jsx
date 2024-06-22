@@ -42,10 +42,10 @@ export const DeleteDataProduktif = ({requestId, requestData}) => {
     }
   return (
     <>
-        <button onClick={handleClickModal} className='btn btn-sm btn-error text-white'><FontAwesomeIcon icon={faTrashCan}/></button>
+        <button id='delete' aria-label='Delete kegiatan' onClick={handleClickModal} className='btn btn-sm btn-error text-white'><FontAwesomeIcon icon={faTrashCan}/></button>
         <dialog id={`delete_modal_data_produktif_${requestId}`} className="modal">
             <div className="modal-box">
-                <h3 className="font-bold text-xl">Hapus Kontribusi?</h3>
+                <h1 className="font-bold text-xl">Hapus Kontribusi?</h1>
                 <div className='divider'></div>
                 <div className='flex justify-between'>
                     <p className='font-semibold'>Nama Kegiatan    : </p>

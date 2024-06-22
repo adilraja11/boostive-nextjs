@@ -86,12 +86,13 @@ export const AddDataProduktif = ({categoryData}) => {
       <div className="relative w-[150px]">
         {featuredImagePreview ? <Image alt={`Pratinjau Gambar Kegiatan`} width={326} height={326} src={featuredImagePreview}></Image> : <Image alt={`Gambar Kegiatan Default`} width={326} height={326} src={'/default.png'}></Image>}
           <div className='absolute bottom-0 right-0'>
-            <button onClick={()=>document.getElementById('upload_image_modal').showModal()} className='btn btn-circle btn-neutral'>
+            <button aria-label='Unggah gambar kegiatan' onClick={()=>document.getElementById('upload_image_modal').showModal()} className='btn btn-circle btn-neutral'>
               <FontAwesomeIcon className='w-6 text-white' icon={faCamera}/>
             </button>
             <dialog id="upload_image_modal" className="modal">
                 <div className="modal-box">
-                    <input 
+                    <input
+                        aria-label='File'
                         type="file" 
                         className="file-input file-input-bordered w-full"
                         onChange={(e) => createFeaturedImagePreview(e.target.files[0])} />
@@ -104,7 +105,7 @@ export const AddDataProduktif = ({categoryData}) => {
       </div>
       <div className="flex flex-col gap-2">
           <label>Kategori</label>
-          <select className="border-2 rounded-lg px-3 py-2" value={categoryId} onChange={handleChangeCategory}>
+          <select aria-label='Pilih Kategori Kegiatan' className="border-2 rounded-lg px-3 py-2" value={categoryId} onChange={handleChangeCategory}>
             <option disabled selected value="Pilih Kategori">Pilih Kategori</option>
             {categoryData.map((data) => {
                 return <option key={data.id} value={data.id}>{data.name}</option>
@@ -112,16 +113,16 @@ export const AddDataProduktif = ({categoryData}) => {
           </select>
       </div>
       <div className="flex flex-col gap-2">
-          <label>Nama Kegiatan</label>
-          <input type='text' placeholder='Masukkan nama' value={title} onChange={handleChangeTitle}></input>
+          <label for='nama-kegiatan'>Nama Kegiatan</label>
+          <input id='nama-kegiatan' type='text' placeholder='Masukkan nama' value={title} onChange={handleChangeTitle}></input>
       </div>
       <div className="flex flex-col gap-2">
-          <label>Tautan</label>
-          <input type='text' placeholder='https://example.com' value={linkUrl} onChange={handleChangeLinkUrl}></input>
+          <label for='tautan'>Tautan</label>
+          <input id='tautan' type='text' placeholder='https://example.com' value={linkUrl} onChange={handleChangeLinkUrl}></input>
       </div>
       <div className="flex flex-col gap-2">
-          <label>Deskripsi</label>
-          <textarea className="border-2 rounded-lg px-3 py-2" rows={'3'} value={description} onChange={handleChangeDescription}></textarea>
+          <label for='deskripsi'>Deskripsi</label>
+          <textarea id='deskripsi' className="border-2 rounded-lg px-3 py-2" rows={'3'} value={description} onChange={handleChangeDescription}></textarea>
       </div>
       <button onClick={handleSubmit} type='submit' className="btn btn-primary font-bold text-base">Tambahkan</button>
     </div>
