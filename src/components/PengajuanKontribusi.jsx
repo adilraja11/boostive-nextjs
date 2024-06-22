@@ -32,7 +32,7 @@ export const PengajuanKontribusi = ({requestData}) => {
             cell: ({cell, row}) => {
                 return <>
                     {row.original.status === 'Ditolak'
-                        ? <p className='text-red-600'>{row.original.status}</p>
+                        ? <p className='text-red-800'>{row.original.status}</p>
                         : <p>{row.original.status}</p>
                     }
                 </>
@@ -75,7 +75,7 @@ export const PengajuanKontribusi = ({requestData}) => {
         <div className='flex justify-between items-center'>
             <div className='flex gap-2 items-center'>
                 <p>Show</p>
-                <select className='select select-md select-bordered' onChange={(e) => table.setPageSize(Number(e.target.value))}>
+                <select aria-label='Pilih Jumlah Data yang akan ditampilkan' className='select select-md select-bordered' onChange={(e) => table.setPageSize(Number(e.target.value))}>
                     <option value="5">5</option>
                     <option value="10">10</option>
                     <option value="25">25</option>

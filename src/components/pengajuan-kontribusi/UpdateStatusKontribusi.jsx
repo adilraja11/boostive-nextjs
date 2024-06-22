@@ -60,7 +60,7 @@ export const UpdateStatusKontribusi = ({requestId, requestData}) => {
         <button id='update' aria-label='Tekan tombol ini untuk mengubah status kontribusi' onClick={handleClickModal} className='btn btn-sm btn-primary text-white'><FontAwesomeIcon icon={faPenToSquare}/></button>
         <dialog id={`update_modal_kontribusi_${requestId}`} className="modal">
             <div className="modal-box">
-                <h3 className="font-bold text-xl">Periksa Kontribusi</h3>
+                <h1 className="font-bold text-xl">Periksa Kontribusi</h1>
                 <div className='divider'></div>
                 <div className='flex justify-between'>
                     <div>

@@ -84,11 +84,11 @@ export const UpdateDataProduktif = ({resourceDetail, categoryData}) => {
     <div className='bg-white shadow-sm shadow-gray-500 rounded-lg px-10 py-4 flex flex-col gap-4'>
         <div className='flex flex-col gap-2'>
             <p>Nama Kontributor</p>
-            <input type="text" value={resourceDetail.contributorName} disabled />
+            <input aria-label="Nama Kontributor" type="text" value={resourceDetail.contributorName} disabled />
         </div>
         <div className='flex flex-col gap-2'>
             <p>Email Kontributor</p>
-            <input type="text" value={resourceDetail.contributorEmail} disabled />
+            <input aria-label="Email Kontributor" type="text" value={resourceDetail.contributorEmail} disabled />
         </div>
         <div className="divider"></div>
         <div className="relative w-[150px]">
