@@ -17,19 +17,26 @@ export const PengajuanKontribusi = ({requestData}) => {
             cell: (info) => info.getValue(),
             header: 'Nama Kegiatan'
         }),
-        columnHelper.accessor(row => `${row.contributorName}\n${row.contributorEmail}`, {
+        columnHelper.accessor('kontributor', {
             id: 'contributor',
             header: 'Kontributor',
-            // cell: (info) => (
-            //     <div>
-            //         <p>{info.getValue()}</p>
-            //         <p>{info.getValue()}</p>
-            //     </div>
-            // )
+            cell: ({row}) => (
+                <div>
+                    <p>{row.original.contributorName}</p>
+                    <p>{row.original.contributorEmail}</p>
+                </div>
+            )
         }),
         columnHelper.accessor('status', {
-            cell: (info) => info.getValue(),
-            header: 'Status'
+            header: 'Status',
+            cell: ({cell, row}) => {
+                return <>
+                    {row.original.status === 'Ditolak'
+                        ? <p className='text-red-600'>{row.original.status}</p>
+                        : <p>{row.original.status}</p>
+                    }
+                </>
+            },
         }),
         columnHelper.accessor('createAt', {
             cell: (info) => moment(info.getValue()).format("MMMM Do YYYY: h:mm:ss A"),
@@ -43,11 +50,11 @@ export const PengajuanKontribusi = ({requestData}) => {
         })
     ];
 
-    const [data, setData] = useState(requestData);
+    // const [data, setData] = useState(requestData);
     const [globalFilter, setGlobalFilter] = useState('');
 
     const table = useReactTable({
-        data,
+        data: requestData,
         columns,
         getCoreRowModel: getCoreRowModel(),
         state: {
@@ -72,7 +79,7 @@ export const PengajuanKontribusi = ({requestData}) => {
                     <option value="5">5</option>
                     <option value="10">10</option>
                     <option value="25">25</option>
-                    <option value={data.length}>All</option>
+                    <option value={requestData.length}>All</option>
                 </select>
                 <p>entries</p>
             </div>
@@ -95,7 +102,7 @@ export const PengajuanKontribusi = ({requestData}) => {
                         <tr key={headerGroup.id}>
                             {headerGroup.headers.map((header) => {
                                 return (
-                                    <th key={header.id}>
+                                    <th className='text-black text-sm' key={header.id}>
                                         {flexRender(header.column.columnDef.header, header.getContext())}
                                     </th>
                                 );

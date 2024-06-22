@@ -76,7 +76,6 @@ export const UpdateDataProduktif = ({resourceDetail, categoryData}) => {
             toast.success(message);
 
             router.push("/dashboard/data-produktif");
-            window.location.replace(`${API_URL}/dashboard/data-produktif`);
         } catch (error) {
             console.log(error);
         }
@@ -93,7 +92,7 @@ export const UpdateDataProduktif = ({resourceDetail, categoryData}) => {
         </div>
         <div className="divider"></div>
         <div className="relative w-[150px]">
-            {featuredImagePreview ? <Image width={326} height={326} src={featuredImagePreview}></Image> : <Image width={326} height={326} src={`${imageUrl}${featuredImage}`}></Image>}
+            {featuredImagePreview ? <Image alt={`Pratinjau Gambar Kegiatan Terbaru`} width={326} height={326} src={featuredImagePreview}></Image> : <Image alt={`Gambar Kegiatan Semula`} width={326} height={326} src={`${imageUrl}${featuredImage}`}></Image>}
             <div className='absolute bottom-0 right-0'>
                 <button onClick={()=>document.getElementById('upload_image_modal').showModal()} className='btn btn-circle btn-neutral'>
                 <FontAwesomeIcon className='w-6 text-white' icon={faCamera}/>

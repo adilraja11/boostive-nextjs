@@ -1,6 +1,8 @@
 import { HeroProduktif } from "@/components/produktif-content/HeroProduktif";
 import { ProduktifCard } from "@/components/reusable/ProduktifCard";
 import { API_URL } from "@/config/apiUrl";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUpRightFromSquare } from '@fortawesome/free-solid-svg-icons'
 import Image from "next/image";
 import Link from "next/link";
 
@@ -37,6 +39,7 @@ export default async function Home({params}) {
           <div className='card bg-base-100 shadow-xl border-solid border-t-0 border-x-0 border-2 border-gray-200'>
             <figure className='mx-4 my-8 h-36'>
               <Image
+                alt="Ikon Tambah Produktif Baru"
                 width={48}
                 height={48}
                 src={'/category-icon/add-cat-icon.png'}></Image>
@@ -49,10 +52,11 @@ export default async function Home({params}) {
               <div className='flex flex-wrap'>
                   <Link href={'/formulir-kontribusi'} className='flex'>
                   <p className='mr-2'>Usulkan</p>
-                  <Image
+                  <FontAwesomeIcon className="w-4" icon={faUpRightFromSquare}/>
+                  {/* <Image
                       width={24}
                       height={24}
-                      src={'/category-icon/usulkan-icon.png'}></Image>
+                      src={'/category-icon/usulkan-icon.png'}></Image> */}
                   </Link>
               </div>
             </div>

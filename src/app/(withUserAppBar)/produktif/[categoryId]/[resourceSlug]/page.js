@@ -21,6 +21,7 @@ export default async function Home({params}) {
         <h1 className="text-center text-2xl md:text-3xl font-semibold tracking-tight">{resourceDetail.title}</h1>
         <span style={{backgroundColor: resourceDetail.category.backgroundColor}} className="h-1.5 w-96 rounded-full lg:w-1/3"></span>
         <Image
+          alt={`Gambar Kegiatan ${resourceDetail.title}`}
           width={326}
           height={326}
           src={`${imageUrl}${resourceDetail.featuredImage}`}

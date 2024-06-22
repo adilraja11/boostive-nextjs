@@ -10,7 +10,8 @@ export const CategoryList = ({categoryData}) => {
             return (
                 <Link key={id} href={`/produktif/${id}`} className='flex items-center'>
                     <div style={{backgroundColor: backgroundColor}} className={`w-[48px] h-[48px] flex flex-shrink-0 justify-center items-center rounded-full md:w-16 md:h-16 sm:w-14 sm:h-14 overflow-hidden`}>
-                        <Image 
+                        <Image
+                            alt={`Ikon Kategori ${name}`}
                             width={48}
                             height={48}
                             src={`${urlImage}${iconImage}`} 

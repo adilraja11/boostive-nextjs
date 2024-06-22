@@ -35,7 +35,7 @@ export const ModalStatusKontribusi = () => {
         <a href="#" onClick={handleClickModal} className="link link-hover text-blue-600">Periksa Status Kontribusi</a>
         <dialog id="check_status_kontribusi" className="modal">
             <div className="flex flex-col modal-box gap-4">
-                <h3 className="font-bold text-lg">Periksa Status Kontribusi</h3>
+                <h1 className="font-bold text-lg">Periksa Status Kontribusi</h1>
                 <div className="flex flex-col gap-2">
                     <label>Nama Anda</label>
                     <input value={contributorName} onChange={handleChangeContributorName} placeholder="Masukkan Nama Anda"></input>

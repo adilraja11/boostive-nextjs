@@ -120,8 +120,8 @@ export const Profile = () => {
     <div className='bg-white shadow-sm shadow-gray-500 rounded-lg px-10 py-4 flex flex-col gap-4'>
       <div className="relative w-[150px]">
         {profileImagePreview 
-          ? <Image width={150} height={150} src={profileImagePreview} className='rounded-full'></Image>
-          : <Image width={150} height={150} src={`${imageUrl}${profileImage}`} className='rounded-full w-36 h-36 object-cover'></Image>
+          ? <Image alt={`Gambar Profil dari User ${fullName}`} width={150} height={150} src={profileImagePreview} className='rounded-full'></Image>
+          : <Image alt={`Gambar Profil dari User ${fullName}`} width={150} height={150} src={`${imageUrl}${profileImage}`} className='rounded-full w-36 h-36 object-cover'></Image>
         }
           <div className='absolute bottom-0 right-0'>
             <button onClick={()=>document.getElementById('upload_profile_modal').showModal()} className='btn btn-circle btn-neutral'>

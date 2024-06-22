@@ -12,7 +12,7 @@ export const FormKontribusiPage = ({categoryData}) => {
   return (
     <div className="bg-slate-100 py-4 grid justify-items-center">
       <div className="w-full max-w-2xl flex flex-col gap-4">
-        <Link href={'/'}>
+        <Link aria-label="Tekan ini untuk kembali ke Halaman Beranda" href={'/'}>
           <FontAwesomeIcon className="h-6 w-6 mx-2" icon={faArrowLeftLong}/>
         </Link>
         <div className="bg-white rounded-lg border-2 mx-2 pb-4">

@@ -107,8 +107,8 @@ export const FormKontribusi = ({categoryData}) => {
         </div>
         <h1 className="font-semibold">Data Produktif</h1>
         <div className="flex flex-col gap-2">
-            <label>Kategori</label>
-            <select className="border-2 rounded-lg px-3 py-2" value={categoryId} onChange={handleChangeCategory}>
+            <label for="category">Kategori</label>
+            <select id='category' className="border-2 rounded-lg px-3 py-2" value={categoryId} onChange={handleChangeCategory}>
                 <option disabled selected value="Pilih Kategori">Pilih Kategori</option>
                 {categoryData.map((data) => {
                     return <option key={data.id} value={data.id}>{data.name}</option>

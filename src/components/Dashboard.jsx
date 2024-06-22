@@ -7,17 +7,17 @@ export const Dashboard = ({kontribusiMasuk, dataProduktif}) => {
     <div className='flex flex-wrap gap-4'>
         <div className="bg-white stat shadow-sm shadow-primary rounded-lg max-w-md">
             <div className="stat-figure text-primary">
-                <FontAwesomeIcon className='w-8' icon={faPaperPlane}/>
+                <FontAwesomeIcon className='w-9' icon={faPaperPlane}/>
             </div>
             <div className="stat-title text-slate-500 font-medium">Kontribusi Masuk</div>
             <div className="stat-value text-primary">{kontribusiMasuk.length.toString().padStart(2, '0')}</div>
         </div>
-        <div className="bg-white stat shadow-sm shadow-accent rounded-lg max-w-md">
-            <div className="stat-figure text-accent">
-                <FontAwesomeIcon className='w-8' icon={faUpRightFromSquare}/>
+        <div className="bg-white stat shadow-sm shadow-green-600 rounded-lg max-w-md">
+            <div className="stat-figure text-green-600">
+                <FontAwesomeIcon className='w-9' icon={faUpRightFromSquare}/>
             </div>
             <div className="stat-title text-slate-500 font-medium">Data Produktif</div>
-            <div className="stat-value text-accent">{dataProduktif.length.toString().padStart(2, '0')}</div>
+            <div className="stat-value text-green-600">{dataProduktif.length.toString().padStart(2, '0')}</div>
         </div>
     </div>
   )

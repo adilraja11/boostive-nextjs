@@ -49,9 +49,9 @@ export const StatusKontribusiTable = ({statusKontribusiData}) => {
   return (
     <div className='flex flex-col gap-4'>
         <div className='flex justify-between items-center'>
-            <div className='flex gap-2 items-center'>
+            <div id='show-number' className='flex gap-2 items-center'>
                 <p>Show</p>
-                <select className='select select-md select-bordered' onChange={(e) => table.setPageSize(Number(e.target.value))}>
+                <select aria-labelledby='show-number' className='select select-md select-bordered' onChange={(e) => table.setPageSize(Number(e.target.value))}>
                     <option value="5">5</option>
                     <option value="10">10</option>
                     <option value="25">25</option>
@@ -78,7 +78,7 @@ export const StatusKontribusiTable = ({statusKontribusiData}) => {
                         <tr key={headerGroup.id}>
                             {headerGroup.headers.map((header) => {
                                 return (
-                                    <th key={header.id}>
+                                    <th className='text-black text-sm' key={header.id}>
                                         {flexRender(header.column.columnDef.header, header.getContext())}
                                     </th>
                                 );

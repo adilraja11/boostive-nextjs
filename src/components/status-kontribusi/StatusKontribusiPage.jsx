@@ -10,7 +10,7 @@ export const StatusKontribusiPage = ({contributorName, decodedContributorEmail, 
   return (
     <div className="bg-slate-100 h-screen py-4 grid justify-items-center">
       <div className="w-full max-w-3xl flex flex-col gap-4">
-        <Link href={'/formulir-kontribusi'}>
+        <Link aria-label='Tekan tombol ini untuk kembali ke Halaman Form Kontribusi' href={'/formulir-kontribusi'}>
           <FontAwesomeIcon className="h-6 w-6 mx-2" icon={faArrowLeftLong}/>
         </Link>
         <div className="bg-white rounded-lg border-2 mx-2 pb-4">

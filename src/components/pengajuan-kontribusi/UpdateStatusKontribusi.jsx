@@ -48,7 +48,6 @@ export const UpdateStatusKontribusi = ({requestId, requestData}) => {
             toast.success(message);
 
             router.refresh();
-            window.location.reload();
         } catch (error) {
             console.log(error);
         }

@@ -20,15 +20,15 @@ export const DataProduktif = ({produktifData}) => {
             cell: (info) => info.getValue(),
             header: 'Nama Kegiatan'
         }),
-        columnHelper.accessor(row => `${row.contributorName}\n${row.contributorEmail}`, {
+        columnHelper.accessor('kontributor', {
             id: 'contributor',
             header: 'Kontributor',
-            // cell: (info) => (
-            //     <div>
-            //         <p>{info.getValue()}</p>
-            //         <p>{info.getValue()}</p>
-            //     </div>
-            // )
+            cell: ({row}) => (
+                <div>
+                    <p>{row.original.contributorName}</p>
+                    <p>{row.original.contributorEmail}</p>
+                </div>
+            )
         }),
         columnHelper.accessor('updateAt', {
             cell: (info) => moment(info.getValue()).format("MMMM Do YYYY: h:mm:ss A"),
@@ -45,11 +45,11 @@ export const DataProduktif = ({produktifData}) => {
         })
     ]
 
-    const [data, setData] = useState(produktifData);
+    // const [data, setData] = useState(produktifData);
     const [globalFilter, setGlobalFilter] = useState('');
 
     const table = useReactTable({
-        data,
+        data: produktifData,
         columns,
         getCoreRowModel: getCoreRowModel(),
         state: {
@@ -74,7 +74,7 @@ export const DataProduktif = ({produktifData}) => {
                     <option value="5">5</option>
                     <option value="10">10</option>
                     <option value="25">25</option>
-                    <option value={data.length}>All</option>
+                    <option value={produktifData.length}>All</option>
                 </select>
                 <p>entries</p>
             </div>
@@ -94,7 +94,7 @@ export const DataProduktif = ({produktifData}) => {
             <thead>
                 {table.getHeaderGroups().map((headerGroup) => {
                     return (
-                        <tr key={headerGroup.id}>
+                        <tr className='text-black text-sm' key={headerGroup.id}>
                             {headerGroup.headers.map((header) => {
                                 return (
                                     <th key={header.id}>

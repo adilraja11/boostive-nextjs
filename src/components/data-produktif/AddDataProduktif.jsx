@@ -77,7 +77,6 @@ export const AddDataProduktif = ({categoryData}) => {
             toast.success(message);
 
             router.push("/dashboard/data-produktif");
-            window.location.replace(`${API_URL}/dashboard/data-produktif`);
         } catch (error) {
             console.log(error);
         }
@@ -85,7 +84,7 @@ export const AddDataProduktif = ({categoryData}) => {
   return (
     <div className='bg-white shadow-sm shadow-gray-500 rounded-lg px-10 py-4 flex flex-col gap-4'>
       <div className="relative w-[150px]">
-        {featuredImagePreview ? <Image width={326} height={326} src={featuredImagePreview}></Image> : <Image width={326} height={326} src={'/default.png'}></Image>}
+        {featuredImagePreview ? <Image alt={`Pratinjau Gambar Kegiatan`} width={326} height={326} src={featuredImagePreview}></Image> : <Image alt={`Gambar Kegiatan Default`} width={326} height={326} src={'/default.png'}></Image>}
           <div className='absolute bottom-0 right-0'>
             <button onClick={()=>document.getElementById('upload_image_modal').showModal()} className='btn btn-circle btn-neutral'>
               <FontAwesomeIcon className='w-6 text-white' icon={faCamera}/>

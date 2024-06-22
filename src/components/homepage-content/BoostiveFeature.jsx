@@ -12,7 +12,7 @@ export const BoostiveFeature = () => {
                 </div>
                 <div className='card-body items-center text-center'>
                     <p className='text-justify pb-2'>Banyak tools produktif yang tersedia, gunakanlah waktu luang anda untuk melakukan hal-hal positif dan jadilah produktif!</p>
-                    <Link className='w-full btn btn-info rounded-full text-white' href={'/produktif'}>Selengkapnya</Link>
+                    <Link className='w-full btn bg-blue-800 rounded-full text-white' href={'/produktif'}>Selengkapnya</Link>
                 </div>
             </div>
             <div className='card w-80 sm:w-96 bg-base-100 shadow-xl'>
@@ -21,7 +21,7 @@ export const BoostiveFeature = () => {
                 </div>
                 <div className='card-body items-center text-center'>
                     <p className='text-justify pb-2'>Banyak tools produktif yang tersedia, gunakanlah waktu luang anda untuk melakukan hal-hal positif dan jadilah produktif!</p>
-                    <Link className='w-full btn btn-error rounded-full text-white' href={'/formulir-kontribusi'}>Selengkapnya</Link>
+                    <Link className='w-full btn bg-red-800 rounded-full text-white' href={'/formulir-kontribusi'}>Selengkapnya</Link>
                 </div>
             </div>
         </div>

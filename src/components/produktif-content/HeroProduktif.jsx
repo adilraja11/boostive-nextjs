@@ -11,6 +11,7 @@ export const HeroProduktif = ({categoryData}) => {
             </div>
             <div className='mb-4 lg:mb-0'>
                 <Image
+                    alt='Ilustrasi Gambar Kategori Produktif'
                     width={190}
                     height={224}
                     className='w-fit ml-24'

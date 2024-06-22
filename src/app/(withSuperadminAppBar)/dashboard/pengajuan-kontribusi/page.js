@@ -3,7 +3,7 @@ import { API_URL } from "@/config/apiUrl";
 
 async function getRequestData() {
   const requestData = await fetch(`${API_URL}/api/kontribusi`, {
-    cache: 'no-cache'
+    cache: 'no-store'
   });
 
   const {data} = await requestData.json();
