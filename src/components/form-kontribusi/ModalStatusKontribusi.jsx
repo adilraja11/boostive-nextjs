@@ -48,7 +48,7 @@ export const ModalStatusKontribusi = () => {
                     <form method="dialog" className="flex gap-3">
                         {/* if there is a button in form, it will close the modal */}
                         <button className="btn">Batal</button>
-                        <button onClick={handleSubmit} className="btn btn-primary">Periksa</button>
+                        <button type='submit' onClick={handleSubmit} className="btn btn-primary">Periksa</button>
                     </form>
                 </div>
             </div>
