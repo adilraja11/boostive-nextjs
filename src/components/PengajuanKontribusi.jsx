@@ -64,7 +64,7 @@ export const PengajuanKontribusi = ({requestData}) => {
         getFilteredRowModel: getFilteredRowModel(),
         initialState: {
             pagination: {
-                pageSize: 5,
+                pageSize: 10,
             }
         },
         getPaginationRowModel: getPaginationRowModel()
@@ -76,10 +76,11 @@ export const PengajuanKontribusi = ({requestData}) => {
             <div className='flex gap-2 items-center'>
                 <p>Show</p>
                 <select aria-label='Pilih Jumlah Data yang akan ditampilkan' className='select select-md select-bordered' onChange={(e) => table.setPageSize(Number(e.target.value))}>
-                    <option value="5">5</option>
                     <option value="10">10</option>
                     <option value="25">25</option>
-                    <option value={requestData.length}>All</option>
+                    <option value="50">50</option>
+                    <option value="100">100</option>
+                    {/* <option value={requestData.length}>All</option> */}
                 </select>
                 <p>entries</p>
             </div>
