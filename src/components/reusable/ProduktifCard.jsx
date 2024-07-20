@@ -17,7 +17,7 @@ export const ProduktifCard = ({title, slug, description, featuredImage, category
             src={`${imageUrl}${featuredImage}`}></Image>
         </figure>
         <div className='card-body items-center text-center'>
-        <h2 className='card-title'>{title}</h2>
+        <h2 className='card-title line-clamp-1'>{title}</h2>
         <p className='mb-0 line-clamp-3'>{description}</p>
         <span style={{backgroundColor: `${category.backgroundColor}`}} className='text-md font-medium mr-2 px-2.5 py-0.5 rounded-full'>{category.name}</span>
         <div className='divider'></div>
